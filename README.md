@@ -4,7 +4,7 @@ The official implementation of **Integrating Language-Image Prior into EEG Decod
 
 ![alt text](figure/Model_framework.png)
 
-The structure of the proposed ELIPformer. (a) ELIPformer consists of the feature extractor, the prompt encoder, the cross bi-attention module, and the fusion module. (b) The prompt encoder consists of components from the pre trained CLIP-ViT-B/32 [30]. The image encoder and text encoder are inherited from this model. Additionally, the patch embedding layer and transformer layers are derived from the image encoder in CLIP-ViT-B/32. (c) The cross bi-attention module is composed of L successive cross bi-attention layers for effective interaction between EEG features and language-image features.
+The structure of the proposed ELIPformer. (a) ELIPformer consists of the feature extractor, the prompt encoder, the cross bi-attention module, and the fusion module. (b) The prompt encoder consists of components from the pre trained CLIP-ViT-B/32. The image encoder and text encoder are inherited from this model. Additionally, the patch embedding layer and transformer layers are derived from the image encoder in CLIP-ViT-B/32. (c) The cross bi-attention module is composed of L successive cross bi-attention layers for effective interaction between EEG features and language-image features.
 
 
 
@@ -92,8 +92,8 @@ In the preprocessing stage, the EEG data for each block are down-sampled to 250 
 
 ## 3&nbsp; Train
 
-The MTREE-Net is optimized using the Adam optimizer. The model assessment follows within-subject decoding settings using the cross-validation strategy. Each subject consists of five blocks, with each block containing 1,000 EEG-EM sample pairs, where around 3% are target-1 samples, 3% are target-2 samples, and the remaining 94% are non-target samples. For each subject, we employ a 5-fold cross-validation to partition experimental blocks into training and test sets. Each block serves as the test set once, while the remaining blocks form the training set. Each fold contains approximately 30 target-1 samples, 30 target-2 samples, and 940 non-target samples. Within each training set,
-a secondary 5-fold cross-validation is applied to subdivide the training data into training and validation sets.
+The EMLPformer is optimized using the Adam optimizer, and the training process includes two stages. In the first stage, the EEG decoding model is pre-trained by minimizing the EEG loss (![EEG loss](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{EEG}})). In the second stage, the entire network is optimized by minimizing the overall loss $L_{overall}$, where the margin parameter $\alpha$ in the triplet loss $L_{triplet}$ is set to 0.5. The Adam optimizer is used with an initial learning rate of 0.001, which is reduced by 20% every 10 epochs in the first stage and every 20 epochs in the second stage. We apply $L_2$ regularization with a weight decay coefficient of 0.01. To ensure robustness in the triplet loss mean center, the batch size $N$ is set to 64 in the first stage and 1024 in the second stage, with a maximum of 30 and 50 training epochs, respectively.
+
 
 ```bash
 python -m torch.distributed.launch --master_port 29502 --nproc_per_node=2 /EMLPformer/main.py
