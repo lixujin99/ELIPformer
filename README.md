@@ -30,54 +30,54 @@ pip install -r requirements.txt
 
 We designed and implemented three RSVP target image retrieval tasks to construct the “NeuBCI Target Retrieval RSVP-EEG Dataset” including EEG data and the corresponding stimulus images. Our collected dataset and corresponding data descriptions are released at [https://doi.org/10.57760/sciencedb.14812](https://doi.org/10.57760/sciencedb.14812).
 
-Each participant's **electroencephalogram (EEG) data** are stored in `.npz` files, and **stimulus images** are stored in `.mat` files. Each EEG and image file with the same file name corresponds to the same participant and block. Below is the dataset structure:
+Each participant's **electroencephalogram (EEG) data** are stored in `.npz` files, and **stimulus images** are also stored in `.npz` files. Each EEG and image file with the same file name corresponds to the same participant. Below is the dataset structure:
 
 | Task | Modality | File Format | File Naming | Data Shape | Label Description |
 |------|----------|-------------|-------------|------------|-------------------|
-| A    | EEG      | `.npz`       | `S1_1.npz` ~ `S43_5.npz` | `(trials × channels × time)` | `0`: non-target, `1`: target-1, `2`: target-2 |
-| A    | EM       | `.mat`       | `S1_1.mat` ~ `S43_5.mat` | `(trials × time × components)` | `0`: non-target, `1`: target-1, `2`: target-2 |
-| B    | EEG      | `.npz`       | `S1_1.npz` ~ `S43_5.npz` | `(trials × channels × time)` | `0`: non-target, `1`: target-1, `2`: target-2 |
-| B    | EM       | `.mat`       | `S1_1.mat` ~ `S43_5.mat` | `(trials × time × components)` | `0`: non-target, `1`: target-1, `2`: target-2 |
-| C    | EEG      | `.npz`       | `S1_1.npz` ~ `S43_5.npz` | `(trials × channels × time)` | `0`: non-target, `1`: target-1, `2`: target-2 |
-| C    | EM       | `.mat`       | `S1_1.mat` ~ `S43_5.mat` | `(trials × time × components)` | `0`: non-target, `1`: target-1, `2`: target-2 |
+| Plane    | EEG      | `.npz`       | `S1.npz` ~ `S20.npz` | `(trials × channels × time)` | `0`: non-target, `1`: target |
+| Plane    | IMG       | `.npz`       | `S1_1.npz` ~ `S20_2.npz` | `(trials × 3 × height × width)` | `0`: non-target, `1`: target |
+| Car    | EEG      | `.npz`       | `S1.npz` ~ `S20.npz` | `(trials × channels × time)` | `0`: non-target, `1`: target |
+| Car    | IMG       | `.npz`       | `S1_1.npz` ~ `S20_2.npz` | `(trials × 3 × height × width)` | `0`: non-target, `1`: target |
+| People    | EEG      | `.npz`       | `S1.npz` ~ `S31.npz` | `(trials × channels × time)` | `0`: non-target, `1`: target |
+| People    | IMG       | `.npz`       | `S1_1.npz` ~ `S31_2.npz` | `(trials × 3 × height × width)` | `0`: non-target, `1`: target |
 
 ```
 /data 
-┣ 📂 TaskA 
+┣ 📂 Plane
 ┃   ┣ 📂 EEG 
-┃   ┃   ┣ 📜 S1_1.npz 
-┃   ┃   ┣ 📜 S1_2.npz 
+┃   ┃   ┣ 📜 S1.npz 
+┃   ┃   ┣ 📜 S2.npz 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S43_5.npz 
-┃   ┣ 📂 EM 
+┃   ┃   ┣ 📜 S20.npz 
+┃   ┣ 📂 Image 
 ┃   ┃   ┣ 📜 S1_1.mat 
 ┃   ┃   ┣ 📜 S1_2.mat 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S43_5.mat
+┃   ┃   ┣ 📜 S20_2.mat
 
-┣ 📂 TaskB 
+┣ 📂 Car
 ┃   ┣ 📂 EEG 
-┃   ┃   ┣ 📜 S1_1.npz 
-┃   ┃   ┣ 📜 S1_2.npz 
+┃   ┃   ┣ 📜 S1.npz 
+┃   ┃   ┣ 📜 S2.npz 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S43_5.npz 
-┃   ┣ 📂 EM 
+┃   ┃   ┣ 📜 S20.npz 
+┃   ┣ 📂 Image 
 ┃   ┃   ┣ 📜 S1_1.mat 
 ┃   ┃   ┣ 📜 S1_2.mat 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S43_5.mat
+┃   ┃   ┣ 📜 S20_2.mat
 
-┣ 📂 TaskC 
+┣ 📂 People
 ┃   ┣ 📂 EEG 
-┃   ┃   ┣ 📜 S1_1.npz 
-┃   ┃   ┣ 📜 S1_2.npz 
+┃   ┃   ┣ 📜 S1.npz 
+┃   ┃   ┣ 📜 S2.npz 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S43_5.npz 
-┃   ┣ 📂 EM 
+┃   ┃   ┣ 📜 S31.npz 
+┃   ┣ 📂 Image 
 ┃   ┃   ┣ 📜 S1_1.mat 
 ┃   ┃   ┣ 📜 S1_2.mat 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S43_5.mat
+┃   ┃   ┣ 📜 S31_2.mat
 ```
 
 ### 2.2&nbsp; Data Acquisition
@@ -92,9 +92,7 @@ In the preprocessing stage, the EEG data for each block are down-sampled to 250 
 
 ## 3&nbsp; Train
 
-The EMLPformer is optimized using the Adam optimizer, and the training process consists of two stages: in the first stage, the EEG decoding model is pre-trained by minimizing the EEG loss ![L_EEG](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{EEG}}); in the second stage, the entire network is optimized by minimizing the overall loss ![L_overall](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{overall}}), which includes the triplet loss component ![L_triplet](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{triplet}}) with margin parameter ![alpha=0.5](https://latex.codecogs.com/svg.latex?\alpha%3D0.5); the Adam optimizer uses an initial learning rate of ![0.001](https://latex.codecogs.com/svg.latex?0.001), which is reduced by 20% every 10 epochs in the first stage and every 20 epochs in the second stage. We apply ![L2](https://latex.codecogs.com/svg.latex?L_2) regularization with a weight decay coefficient of ![0.01](https://latex.codecogs.com/svg.latex?0.01). To ensure robustness in triplet loss mean centering, the batch size ![N](https://latex.codecogs.com/svg.latex?N) is set to 64 in the first stage and 1024 in the second stage, with a maximum of 30 and 50 training epochs, respectively.
-
-
+The EMLPformer is optimized using the Adam optimizer, and the training process consists of two stages: in the first stage, the EEG decoding model is pre-trained by minimizing the EEG loss; in the second stage, the entire network is optimized by minimizing the overall loss, which includes the triplet loss with margin parameter α=0.5. The Adam optimizer uses an initial learning rate of 0.001, which is reduced by 20% every 10 epochs in the first stage and every 20 epochs in the second stage. We apply L2 regularization with a weight decay coefficient of 0.01. To ensure robustness in triplet loss mean centering, the batch size N is set to 64 in the first stage and 1024 in the second stage, with a maximum of 30 and 50 training epochs, respectively.
 
 ```bash
 python -m torch.distributed.launch --master_port 29502 --nproc_per_node=2 /EMLPformer/main.py
