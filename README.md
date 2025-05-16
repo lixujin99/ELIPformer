@@ -50,10 +50,10 @@ Each participant's **electroencephalogram (EEG) data** are stored in `.npz` file
 ┃   ┃   ┣ 📜 ... 
 ┃   ┃   ┣ 📜 S20.npz 
 ┃   ┣ 📂 Image 
-┃   ┃   ┣ 📜 S1_1.mat 
-┃   ┃   ┣ 📜 S1_2.mat 
+┃   ┃   ┣ 📜 S1_1.npz 
+┃   ┃   ┣ 📜 S1_2.npz 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S20_2.mat
+┃   ┃   ┣ 📜 S20_2.npz
 
 ┣ 📂 Car
 ┃   ┣ 📂 EEG 
@@ -62,10 +62,10 @@ Each participant's **electroencephalogram (EEG) data** are stored in `.npz` file
 ┃   ┃   ┣ 📜 ... 
 ┃   ┃   ┣ 📜 S20.npz 
 ┃   ┣ 📂 Image 
-┃   ┃   ┣ 📜 S1_1.mat 
-┃   ┃   ┣ 📜 S1_2.mat 
+┃   ┃   ┣ 📜 S1_1.npz 
+┃   ┃   ┣ 📜 S1_2.npz 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S20_2.mat
+┃   ┃   ┣ 📜 S20_2.npz
 
 ┣ 📂 People
 ┃   ┣ 📂 EEG 
@@ -74,10 +74,10 @@ Each participant's **electroencephalogram (EEG) data** are stored in `.npz` file
 ┃   ┃   ┣ 📜 ... 
 ┃   ┃   ┣ 📜 S31.npz 
 ┃   ┣ 📂 Image 
-┃   ┃   ┣ 📜 S1_1.mat 
-┃   ┃   ┣ 📜 S1_2.mat 
+┃   ┃   ┣ 📜 S1_1.npz 
+┃   ┃   ┣ 📜 S1_2.npz 
 ┃   ┃   ┣ 📜 ... 
-┃   ┃   ┣ 📜 S31_2.mat
+┃   ┃   ┣ 📜 S31_2.npz
 ```
 
 ### 2.2&nbsp; Data Acquisition
