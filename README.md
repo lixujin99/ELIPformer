@@ -80,26 +80,9 @@ Each participant's **electroencephalogram (EEG) data** are stored in `.npz` file
 ┃   ┃   ┣ 📜 S31_2.npz
 ```
 
-### 2.2&nbsp; Data Acquisition
-
-The EEG data are recorded using a SynAmp2 Amplifier (NeuroScan, Australia) with a 64-channel Ag/AgCl electrode cap following the international 10-20 system. The electrode impedances are maintained below 10 kΩ, with AFz serving as the ground electrode and the vertex as the reference. Data are sampled at 1000 Hz. Both EEG and eye movement signals are recorded simultaneously during the experiment. 
-
 
 ## 3&nbsp; Train
 
 ```bash
 python -m torch.distributed.launch --master_port 29502 --nproc_per_node=2 /EMLPformer/main.py
-```
-
-## 4&nbsp; Cite
-
-If you find this code or our ELIPformer paper helpful for your research, please cite our paper:
-
-```bibtex
-@article{li2025integrating,
-  title={Integrating Language-Image Prior into EEG Decoding for Cross-Task Zero-Calibration RSVP-BCI},
-  author={Li, Xujin and Wei, Wei and Qiu, Shuang and Zhang, Xinyi and Li, Fu and He, Huiguang},
-  journal={arXiv preprint arXiv:2501.02841},
-  year={2025}
-}
 ```
