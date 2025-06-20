@@ -4,7 +4,7 @@ The official implementation of **Integrating Language-Image Prior into EEG Decod
 
 ![alt text](figure/Model_framework.png)
 
-The structure of the proposed ELIPformer. (a) ELIPformer consists of the feature extractor, the prompt encoder, the cross bi-attention module, and the fusion module. (b) The structure of prompt encoder.  (c) The structure of cross bi-attention module.
+The structure of the proposed ELIPformer.
 
 
 
